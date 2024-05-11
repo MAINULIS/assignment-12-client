@@ -1,9 +1,13 @@
+import Container from "../../../components/shared/Container";
 
 const Home = () => {
     return (
-        <div>
-            <h2 className="text-neutral-800 font-serif">This is Assignment-12 </h2>
-        </div>
+        <Container>
+            <div>
+
+                <h2 className="text-neutral-800 font-serif mt-5">This is Assignment-12 setup </h2>
+            </div>
+        </Container>
     );
 };
 
