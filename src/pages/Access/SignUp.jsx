@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
+    const [show, setShow] = useState(false)
     const {
         register,
         handleSubmit,
@@ -40,12 +43,15 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text text-xl text-black">Password</span>
                                 </label>
-                                <input type="password" placeholder="password" {...register("password", {
+                                <input type={show? 'text' : 'password'} placeholder="password" {...register("password", {
                                     required: true,
                                     minLength: 6,
                                     maxLength: 12,
                                     pattern: /((?=.*[A-Z])||(?=.*[a-z]))(?=.*[@!#$&*])/
                                 })} name="password" className="input input-bordered bg-white" />
+                                <p onClick={() => setShow(!show)}> {
+                                    show ? <span className="flex mt-1 gap-1"><MdCheckBox className="mt-1 cursor-pointer" size={20} />Hide</span> : <span className="flex mt-1 gap-1"> <MdCheckBoxOutlineBlank  className="mt-1 cursor-pointer" size={20} /> Show</span>
+                                } </p>
                                 {errors.password?.type === "minLength" && <p className="text-red-500">Password should be at least six characters</p>}
                                 {errors.password?.type === "pattern" && <p className="text-red-500">Please use at least one Alphabet and one special characters(!@#$&*) </p>}
 
@@ -54,19 +60,18 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text text-xl text-black">Confirm Password</span>
                                 </label>
-                                <input type="password" placeholder="password" {...register("password", {
+                                <input type="password" placeholder="password" {...register("confirm password", {
                                     required: true,
                                     minLength: 6,
                                     maxLength: 12,
-                                    pattern: /((?=.*[A-Z])||(?=.*[a-z]))(?=.*[@!#$&*])/
-                                })} name="password" className="input input-bordered bg-white" />
+                                })} name="confirm password" className="input input-bordered bg-white" />
                                 {errors.password?.type === "minLength" && <p className="text-red-500">Password should be at least six characters</p>}
-                                {errors.password?.type === "pattern" && <p className="text-red-500">Please use at least one Alphabet and one special characters(!@#$&*) </p>}
+                                {errors.password && <p className="text-red-500">Password Din Not Matched</p>}
 
                             </div>
 
                             <div className="form-control mt-6">
-                                <input className="btn bg-lime-600 hover:bg-lime-500 font-bold border-none text-white" type="submit" value="Sign Up" />
+                                <input className="btn bg-lime-600 hover:bg-lime-500 font-bold border-none text-white lg:text-lg" type="submit" value="Sign Up" />
                             </div>
                         <div className='text-center'>
                             <p className=''>Already have an Account? <Link to="/login" className='underline font-semibold text-sky-600'>Sign in here.</Link></p>
