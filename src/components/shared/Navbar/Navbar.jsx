@@ -52,7 +52,7 @@ const Navbar = () => {
                                 width={60} />
                         </div>
                     </> :
-                        <Link className="hover:bg-neutral-400 py-2 px-3 rounded transition font-bold text-xl pr-4 text-green-900" to="/">Login</Link>
+                        <Link className="hover:bg-neutral-400 py-2 px-3 rounded transition font-bold text-xl pr-4 text-green-900" to="/login">Login</Link>
                 }
             </div>
 
