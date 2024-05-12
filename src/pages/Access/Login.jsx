@@ -26,12 +26,14 @@ const Login = () => {
         .then(result => {
             const loggedUser = result.user;
             console.log(loggedUser);
+            setLoading(false);
              reset(); 
              toast.success('You have been successfully sign in !')
         })
         .catch(error => {
             console.log(error.message);
-            toast.error(error.message)
+            toast.error(error.message);
+            setLoading(false)
         })
     }
     return (
