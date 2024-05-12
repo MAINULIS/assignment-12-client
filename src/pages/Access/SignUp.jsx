@@ -4,6 +4,7 @@ import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import toast from "react-hot-toast";
+import { ImSpinner3 } from "react-icons/im";
 
 const SignUp = () => {
     const { createUser, loading, setLoading } = useContext(AuthContext);
@@ -101,7 +102,10 @@ const SignUp = () => {
                     </div>
 
                     <div className="form-control mt-6">
-                        <input className="btn bg-lime-600 hover:bg-lime-500 font-bold border-none text-white lg:text-lg" type="submit" value="Sign Up" />
+                        {/* <input className="btn bg-lime-600 hover:bg-lime-500 font-bold border-none text-white lg:text-lg" type="submit" value="Sign Up" /> */}
+                        <button type="submit" className="btn bg-cyan-600 hover:bg-cyan-600 font-bold border-none text-white lg:text-lg">
+                        {loading ? <ImSpinner3 className="mx-auto animate-spin" size={26} /> : " Sign Up "}
+                        </button>
                     </div>
                     <div className='text-center'>
                         <p className=''>Already have an Account? <Link to="/login" className='underline font-semibold text-sky-600'>Sign in here.</Link></p>

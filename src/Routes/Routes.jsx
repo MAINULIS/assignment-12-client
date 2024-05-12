@@ -14,15 +14,16 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
+            },
+            {
+                path:'login',
+                element: <Login />
+            },
+            {
+                path:'signup',
+                element: <SignUp />
             }
         ]
     },
-    {
-        path:'login',
-        element: <Login />
-    },
-    {
-        path:'signup',
-        element: <SignUp />
-    }
+    
 ])

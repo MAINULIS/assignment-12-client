@@ -1,14 +1,19 @@
 import { Link } from "react-router-dom";
 import logo from '../../../assets/images/icon.ico'
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
+import avatarImg from '../../../assets/images/placeholder.jpg'
+import { HiMiniBars3 } from "react-icons/hi2";
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
 
     const navOptions = <>
         <li className="hover:bg-neutral-400 py-1 px-2 rounded transition"><Link to="/">HOME</Link></li>
         <li className="hover:bg-neutral-400 py-1 px-2 rounded transition"><Link to="/">instructors</Link></li>
         <li className="hover:bg-neutral-400 py-1 px-2 rounded transition"><Link to="/">classes</Link></li>
     </>
-    const user = []
+
     return (
         <div className="navbar bg-black fixed z-10 bg-opacity-30 w-full text-white shadow-sm border-b-[1px]">
             <div className="navbar-start ">
@@ -40,17 +45,25 @@ const Navbar = () => {
             <div className="navbar-end font-semibold">
                 {
                     user ? <>
-                        <Link className="hover:bg-neutral-400 py-2 px-3 rounded transition uppercase" to="/">Dashboard</Link>
-                        <div className="ml-5">
-                            <img className='rounded-full'
+                        
+                        <div className="dropdown dropdown-end pr-2">
+                            <div tabIndex={0} role="button" className="m-1 "><HiMiniBars3 size={24}/></div>
+                            <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-neutral-300 rounded-box w-52">
+                            <Link className="hover:bg-neutral-400 py-2 px-3 rounded transition text-green-900 uppercase" to="/">Dashboard</Link>
+                            <Link onClick={() => { logOut() }} className="hover:bg-neutral-400 py-2 px-3 rounded transition font-semibold text-xl pr-4 text-green-900" to="/login">LogOut</Link>
+                            </ul>
+                        </div>
+                        <div className="pr-4">
+                            <img className='rounded-full cursor-pointer'
                                 referrerPolicy='no-referer'
-                                src={user && user.photoURL ? user.photoURL : "https://tecdn.b-cdn.net/img/new/avatars/2.webp"}
+                                src={user && user.photoURL ? user.photoURL : avatarImg}
                                 data-te-toggle="tooltip"
                                 title={`This is ${user?.displayName}`}
                                 alt="profile"
-                                height={60}
-                                width={60} />
+                                height={50}
+                                width={50} />
                         </div>
+                        
                     </> :
                         <Link className="hover:bg-neutral-400 py-2 px-3 rounded transition font-bold text-xl pr-4 text-green-900" to="/login">Login</Link>
                 }

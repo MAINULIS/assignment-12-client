@@ -4,6 +4,7 @@ import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import toast from "react-hot-toast";
+import { ImSpinner3 } from "react-icons/im";
 
 const Login = () => {
     const [show, setShow] = useState(false);
@@ -11,12 +12,14 @@ const Login = () => {
         loading, 
         setLoading,
         signIn,
+        resetPassword,
     } = useContext(AuthContext);
 
     const {
         register,
         handleSubmit,
         reset,
+        watch,
         formState: { errors },
     } = useForm();
 
@@ -26,15 +29,32 @@ const Login = () => {
         .then(result => {
             const loggedUser = result.user;
             console.log(loggedUser);
+            reset(); 
+            toast.success('You have been successfully sign in !')
             setLoading(false);
-             reset(); 
-             toast.success('You have been successfully sign in !')
         })
         .catch(error => {
             console.log(error.message);
             toast.error(error.message);
             setLoading(false)
         })
+    }
+
+    const handleResetPass = () => {
+        const email = watch("email")
+        if(!email){
+            toast("Please provide your email to reset password")
+            return;
+        }
+        resetPassword(email)
+        .then( () => {
+            toast.success("Please check your email box to reset password");
+            setLoading(false);
+        })
+        .catch( error => {
+            toast.error(error.message)
+            setLoading(false)
+          })
     }
     return (
         <div className="py-24">
@@ -61,16 +81,19 @@ const Login = () => {
                             <p onClick={() => setShow(!show)}> {
                                 show ? <span className="flex mt-1 gap-1"><MdCheckBox className="mt-1 cursor-pointer" size={20} />Hide</span> : <span className="flex mt-1 gap-1"> <MdCheckBoxOutlineBlank className="mt-1 cursor-pointer" size={20} /> Show</span>
                             } </p>
-                            <p className='text-zinc-600 font-semibold mt-1'><small>Forget password? <button className='text-cyan-600 underline'>Reset</button> </small>
+                            <p className='text-zinc-600 font-semibold mt-1'><small>Forget password? <button
+                            onClick={handleResetPass} className='text-cyan-600 underline'>Reset</button> </small>
                             </p>
                         </div>
                         {errors.password?.type === "minLength" && <p className="text-red-500">Password should be at least six characters</p>}
-                        {errors.password && <p className="text-red-500">Password Did Not Matched!</p>}
 
                     </div>
 
                     <div className="form-control mt-6">
-                        <input className="btn bg-lime-600 hover:bg-lime-500 font-bold border-none text-white lg:text-lg" type="submit" value="Sign In" />
+                        {/* <input className="btn bg-lime-600 hover:bg-lime-500 font-bold border-none text-white lg:text-lg" type="submit" value="Sign In" /> */}
+                        <button type="submit" className="btn bg-cyan-600 hover:bg-cyan-600 font-bold border-none text-white lg:text-lg">
+                        {loading ? <ImSpinner3 className="mx-auto animate-spin" size={26} /> : " Sign In "}
+                        </button>
                     </div>
                     <div className='text-center'>
                         <p className=''>New here? <Link to="/signup" className='underline font-semibold text-sky-600'>Create an account </Link></p>
