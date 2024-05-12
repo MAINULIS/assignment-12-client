@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import toast from "react-hot-toast";
 
 const Login = () => {
     const [show, setShow] = useState(false);
+    const {
+        loading, 
+        setLoading,
+        signIn,
+    } = useContext(AuthContext);
 
     const {
         register,
@@ -12,11 +19,26 @@ const Login = () => {
         reset,
         formState: { errors },
     } = useForm();
+
+    const onSubmit = (data) => {
+        // console.log(data);
+        signIn(data.email, data.password)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+             reset(); 
+             toast.success('You have been successfully sign in !')
+        })
+        .catch(error => {
+            console.log(error.message);
+            toast.error(error.message)
+        })
+    }
     return (
         <div className="py-24">
             <div className="card md:w-1/2 max-w-sm mx-auto  border rounded-none rounded-t-md">
                 <h2 className="text-xl md:text-2xl text-slate-100 lg:text-3xl bg-stone-800 rounded-t-md  font-semibold text-center py-4">Language Learning School</h2>
-                <form onSubmit={handleSubmit()} className="card-body text-neutral-500">
+                <form onSubmit={handleSubmit(onSubmit)} className="card-body text-neutral-500">
                     <h1 className="text-xl md:text-2xl lg:text-3xl text-center text-stone-700 font-semibold md:font-bold whitespace-nowrap">Great to have you back!</h1>
                     <div className="form-control">
                         <label className="label">
