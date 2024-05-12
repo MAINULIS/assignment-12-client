@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import toast from "react-hot-toast";
 import { ImSpinner3 } from "react-icons/im";
+import SocialLogin from "./SocialLogin";
 
 const Login = () => {
     const [show, setShow] = useState(false);
@@ -30,7 +31,7 @@ const Login = () => {
             const loggedUser = result.user;
             console.log(loggedUser);
             reset(); 
-            toast.success('You have been successfully sign in !')
+            toast.success('You have been successfully signed in !')
             setLoading(false);
         })
         .catch(error => {
@@ -99,9 +100,10 @@ const Login = () => {
                         <p className=''>New here? <Link to="/signup" className='underline font-semibold text-sky-600'>Create an account </Link></p>
                     </div>
                 </form>
-                <div>
+                <div className="-mt-3">
                     <h5 className='text-center text-xl font-semibold text-neutral-500 divider'> or </h5>
                     {/* social login */}
+                    <SocialLogin />
                 </div>
             </div>
         </div>

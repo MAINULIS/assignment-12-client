@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import toast from "react-hot-toast";
 import { ImSpinner3 } from "react-icons/im";
+import SocialLogin from "./SocialLogin";
 
 const SignUp = () => {
     const { createUser, loading, setLoading } = useContext(AuthContext);
@@ -111,9 +112,10 @@ const SignUp = () => {
                         <p className=''>Already have an Account? <Link to="/login" className='underline font-semibold text-sky-600'>Sign in here.</Link></p>
                     </div>
                 </form>
-                <div>
+                <div className="-mt-3">
                     <h5 className='text-center text-xl font-semibold text-neutral-500 divider'> or </h5>
                     {/* social login */}
+                    <SocialLogin />
                 </div>
             </div>
         </div>
