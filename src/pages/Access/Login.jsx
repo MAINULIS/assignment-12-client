@@ -1,13 +1,16 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import toast from "react-hot-toast";
 import { ImSpinner3 } from "react-icons/im";
 import SocialLogin from "./SocialLogin";
 
 const Login = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.form?.pathname || '/';
     const [show, setShow] = useState(false);
     const {
         loading, 
@@ -30,6 +33,7 @@ const Login = () => {
         .then(result => {
             const loggedUser = result.user;
             console.log(loggedUser);
+            navigate(from, {replace:true})
             reset(); 
             toast.success('You have been successfully signed in !')
             setLoading(false);

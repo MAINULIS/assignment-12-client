@@ -1,15 +1,18 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import toast from "react-hot-toast";
 import { ImSpinner3 } from "react-icons/im";
 import SocialLogin from "./SocialLogin";
 
 const SignUp = () => {
-    const { createUser, loading, setLoading } = useContext(AuthContext);
+    const { createUser, updateUserProfile, loading, setLoading } = useContext(AuthContext);
     const [show, setShow] = useState(false)
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.form?.pathname || '/';
     const {
         register,
         handleSubmit,
@@ -22,26 +25,36 @@ const SignUp = () => {
         const email = data.email;
         const pass = data.password;
         const confirmPass = data.confirmPass;
-        if(pass !== confirmPass){
+        if (pass !== confirmPass) {
             toast.error('Password Did Not Matched!')
             setLoading(false)
             return;
-        } 
+        }
         // image upload
         const image = data.image[0];
 
         // create user
         createUser(email, pass)
-        .then(result => {
-            console.log(result.user);
-            toast.success("Your account successfully created")
-            reset();
-            setLoading(false)
-        })
-        .catch(error => {
-            console.log(error.message);
-            setLoading(false);
-        })
+            .then(result => {
+                console.log(result.user);
+                // update profile info
+                updateUserProfile(name,)
+                    .then(() => {
+                        setLoading(false)
+                        navigate(from, { replace: true })
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+
+                toast.success("Your account successfully created")
+                reset();
+                setLoading(false)
+            })
+            .catch(error => {
+                console.log(error.message);
+                setLoading(false);
+            })
 
 
     }
@@ -105,7 +118,7 @@ const SignUp = () => {
                     <div className="form-control mt-6">
                         {/* <input className="btn bg-lime-600 hover:bg-lime-500 font-bold border-none text-white lg:text-lg" type="submit" value="Sign Up" /> */}
                         <button type="submit" className="btn bg-cyan-600 hover:bg-cyan-600 font-bold border-none text-white lg:text-lg">
-                        {loading ? <ImSpinner3 className="mx-auto animate-spin" size={26} /> : " Sign Up "}
+                            {loading ? <ImSpinner3 className="mx-auto animate-spin" size={26} /> : " Sign Up "}
                         </button>
                     </div>
                     <div className='text-center'>

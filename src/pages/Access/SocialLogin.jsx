@@ -3,9 +3,13 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa6";
 import toast from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
     const {signInWithGoogle, setLoading} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.form?.pathname || '/';
 
     const handleGoogleLogin = () =>{
         signInWithGoogle()
@@ -14,7 +18,7 @@ const SocialLogin = () => {
             console.log(loggedUser);
             toast.success('You have been successfully signed in !');
             setLoading(false)
-            // navigate(from, {replace:true})
+            navigate(from, {replace:true})
         })
         .catch(error =>{
             console.log(error.message)
