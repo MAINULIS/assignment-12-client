@@ -6,7 +6,7 @@ const Footer = () => {
             <footer className="footer p-10 bg-base-200 justify-evenly text-gray-200">
                 <nav>
                     <h6 className="footer-title ">Services</h6>
-                    <a to="/" className="link link-hover">home</a>
+                    <a to="/" className="link link-hover">Home</a>
                     <a className="link link-hover">About us</a>
                     <a className="link link-hover">Camping</a>
                 </nav>

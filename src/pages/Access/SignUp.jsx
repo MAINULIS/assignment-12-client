@@ -12,7 +12,7 @@ const SignUp = () => {
     const [show, setShow] = useState(false)
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.form?.pathname || '/';
+    const from = location.state?.from?.pathname || '/';
     const {
         register,
         handleSubmit,
@@ -32,31 +32,41 @@ const SignUp = () => {
         }
         // image upload
         const image = data.image[0];
+        const formData = new FormData();
+        formData.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMG_KEY}`;
+        fetch(url, {
+            method: 'POST',
+            body: formData,
+        })
+            .then(res => res.json())
+            .then(imageData => {
+                const imageUrl = imageData.data.display_url;
+                console.log(imageUrl);
+                // create user
+                createUser(email, pass)
+                    .then(result => {
+                        console.log(result.user);
+                        // update profile info
+                        updateUserProfile(name, imageUrl)
+                            .then(() => {
+                                setLoading(false)
+                                navigate(from, { replace: true })
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            })
 
-        // create user
-        createUser(email, pass)
-            .then(result => {
-                console.log(result.user);
-                // update profile info
-                updateUserProfile(name,)
-                    .then(() => {
+                        toast.success("Your account successfully created")
+                        reset();
                         setLoading(false)
-                        navigate(from, { replace: true })
                     })
                     .catch(error => {
-                        console.log(error);
+                        console.log(error.message);
+                        setLoading(false);
                     })
 
-                toast.success("Your account successfully created")
-                reset();
-                setLoading(false)
             })
-            .catch(error => {
-                console.log(error.message);
-                setLoading(false);
-            })
-
-
     }
 
     return (

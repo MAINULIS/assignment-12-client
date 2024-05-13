@@ -10,7 +10,7 @@ import SocialLogin from "./SocialLogin";
 const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.form?.pathname || '/';
+    const from = location.state?.from?.pathname || '/';
     const [show, setShow] = useState(false);
     const {
         loading, 

@@ -9,13 +9,13 @@ const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
 
     const navOptions = <>
-        <li className="hover:bg-neutral-400 py-1 px-2 rounded transition"><Link to="/">HOME</Link></li>
+        <li className="hover:bg-neutral-400 py-1 px-2 rounded transition "><Link to="/">HOME</Link></li>
         <li className="hover:bg-neutral-400 py-1 px-2 rounded transition"><Link to="/">instructors</Link></li>
         <li className="hover:bg-neutral-400 py-1 px-2 rounded transition"><Link to="/">classes</Link></li>
     </>
 
     return (
-        <div className="navbar bg-black fixed z-10 bg-opacity-30 w-full text-white shadow-sm border-b-[1px]">
+        <div className="navbar bg-black fixed z-10 bg-opacity-50 w-full text-white shadow-sm border-b-[1px]">
             <div className="navbar-start ">
                 <div className="dropdown uppercase ">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -38,7 +38,7 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex font-semibold uppercase ">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu active:text-neutral-600  menu-horizontal px-1">
                     {navOptions}
                 </ul>
             </div>
