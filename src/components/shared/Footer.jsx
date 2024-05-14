@@ -4,17 +4,19 @@ const Footer = () => {
     return (
         <div className="">
             <footer className="footer p-10 bg-base-200 justify-evenly text-gray-200">
-                <nav>
-                    <h6 className="footer-title ">Services</h6>
-                    <a to="/" className="link link-hover">Home</a>
-                    <a className="link link-hover">About us</a>
-                    <a className="link link-hover">Camping</a>
-                </nav>
-                <nav>
+            <nav>
                     <h6 className="footer-title">Contact Us</h6>
+                    <a className="link link-hover">About us</a>
                     <a className="link link-hover">Help Center</a>
                     <a className="link link-hover">Authors</a>
                     <a className="link link-hover">Instructors</a>
+                </nav>
+                <nav>
+                    <h6 className="footer-title ">Programmes</h6>
+                    <a to="/" className="link link-hover">Long-term Programmes</a>
+                    <a className="link link-hover">Intensive Programmes</a>
+                    <a className="link link-hover">Specialized Programme</a>
+                    <a className="link link-hover">Language Trainings</a>
                 </nav>
                 <nav>
                 <h6 className="footer-title">Follow Us</h6>

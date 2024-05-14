@@ -82,7 +82,7 @@ const Login = () => {
                             required: true,
                             minLength: 6,
                         })} name="password" className="input input-bordered bg-white" />
-                        <div className="flex justify-center">
+                        <div className="flex justify-between">
                             <p onClick={() => setShow(!show)}> {
                                 show ? <span className="flex mt-1 gap-1"><MdCheckBox className="mt-1 cursor-pointer" size={20} />Hide</span> : <span className="flex mt-1 gap-1"> <MdCheckBoxOutlineBlank className="mt-1 cursor-pointer" size={20} /> Show</span>
                             } </p>

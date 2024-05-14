@@ -1,13 +1,11 @@
-import Container from "../../../components/shared/Container";
+import Carousel from "../Banner/Carousel";
 
 const Home = () => {
     return (
-        <Container>
-            <div>
+        <>
+        <Carousel></Carousel>
+        </>
 
-                <h2 className="text-neutral-800 font-serif mt-5">This is Assignment-12 setup </h2>
-            </div>
-        </Container>
     );
 };
 
