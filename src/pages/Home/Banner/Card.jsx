@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const Card = ({img, heading, position}) => {
     return (
@@ -10,7 +11,7 @@ const Card = ({img, heading, position}) => {
                                     {heading}
                                 </p>
                                 <div className='flex gap-5 uppercase'>
-                                    <button className="btn btn-sm text-white hover:bg-cyan-700 bg-cyan-600">Sign up now</button>
+                                    <Link to="/signup" className="btn btn-sm text-white hover:bg-cyan-700 bg-cyan-600">Sign up now</Link>
                                     <button className="btn btn-sm btn-outline text-white ">learn more</button>
                                 </div>
                             </div>

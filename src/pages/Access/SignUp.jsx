@@ -6,6 +6,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import toast from "react-hot-toast";
 import { ImSpinner3 } from "react-icons/im";
 import SocialLogin from "./SocialLogin";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
     const { createUser, updateUserProfile, loading, setLoading } = useContext(AuthContext);
@@ -70,6 +71,10 @@ const SignUp = () => {
     }
 
     return (
+        <>
+            <Helmet>
+                <title>Language School | Sign Up</title>
+            </Helmet>
         <div className="py-24">
             <div className="card md:w-1/2 max-w-sm mx-auto  border rounded-none rounded-t-md ">
                 <h2 className="text-xl md:text-2xl text-slate-100 lg:text-3xl bg-stone-800 rounded-t-md  font-semibold text-center py-4">Language Learning School</h2>
@@ -142,6 +147,7 @@ const SignUp = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
