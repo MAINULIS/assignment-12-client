@@ -13,7 +13,7 @@ const CourseCard = ({ course }) => {
                     </h2>
                     <div className="flex justify-between">
                         <h2 className="">
-                            <span className="md:text-xl font-semibold text-neutral-700">Available sets:</span>
+                            <span className="md:text-xl font-semibold text-neutral-700">Available seats:</span>
                             <span className="text-neutral-500"> {course.availableSets}</span>
                         </h2>
                         <div className="badge badge-secondary text-white font-semibold">$ {course.price}</div>

@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Card = ({img, heading, position}) => {
+    const {user} = useContext(AuthContext);
     return (
         <div>
             <div className=" relative w-full">
@@ -11,7 +14,7 @@ const Card = ({img, heading, position}) => {
                                     {heading}
                                 </p>
                                 <div className='flex gap-5 uppercase'>
-                                    <Link to="/signup" className="btn btn-sm text-white hover:bg-cyan-700 bg-cyan-600">Sign up now</Link>
+                                    <Link to={user ? "/" : "/signup"} className="btn btn-sm text-white hover:bg-cyan-700 bg-cyan-600">Sign up now</Link>
                                     <button className="btn btn-sm btn-outline text-white ">learn more</button>
                                 </div>
                             </div>
