@@ -3,6 +3,7 @@ import Carousel from "../Banner/Carousel";
 import Course from "../Courses/Course";
 import Instructor from "../Instructors/Instructor";
 import Testimonial from "../Testimonials/Testimonial";
+import LanguageSection from "../Languages/LanguageSection";
 
 const Home = () => {
     return (
@@ -13,7 +14,7 @@ const Home = () => {
         <Carousel></Carousel>
         <Course></Course>
         <Instructor></Instructor>
-       
+        <LanguageSection></LanguageSection>
         <Testimonial></Testimonial>
         </div>
 

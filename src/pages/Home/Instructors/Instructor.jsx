@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Container from "../../../components/shared/Container";
 import { getInstructors } from "../../../apis/instructors";
-import Loader from "../../../components/shared/Loader";
 import InstructorCard from "./InstructorCard";
 
 const Instructor = () => {
@@ -19,7 +18,6 @@ const Instructor = () => {
             })
             .catch(error => console.log(error))
     }, [])
-    // console.log(instructors);
     return (
         <Container>
             <p className="lg:text-5xl md:text-3xl text-2xl text-center font-thin text-neutral-800">Our Popular Instructors</p>

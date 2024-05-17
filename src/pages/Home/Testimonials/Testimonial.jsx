@@ -27,7 +27,6 @@ const Testimonial = () => {
             })
             .catch(error => console.log(error))
     }, [])
-    // console.log(testimonials);
    
     return (
         <div className=" bg-neutral-100 mt-10 shadow-sm">
