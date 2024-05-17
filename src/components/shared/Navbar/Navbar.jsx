@@ -10,7 +10,7 @@ const Navbar = () => {
 
     const navOptions = <>
         <li className="hover:bg-neutral-400 py-1 px-2 rounded transition "><Link to="/">HOME</Link></li>
-        <li className="hover:bg-neutral-400 py-1 px-2 rounded transition"><Link to="/">instructors</Link></li>
+        <li className="hover:bg-neutral-400 py-1 px-2 rounded transition"><Link to="/instructors">instructors</Link></li>
         <li className="hover:bg-neutral-400 py-1 px-2 rounded transition"><Link to="/">classes</Link></li>
     </>
 
