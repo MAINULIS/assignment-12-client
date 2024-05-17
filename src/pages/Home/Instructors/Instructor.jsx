@@ -19,10 +19,7 @@ const Instructor = () => {
             })
             .catch(error => console.log(error))
     }, [])
-    console.log(instructors);
-    if (loading) {
-        return <Loader></Loader>
-    }
+    // console.log(instructors);
     return (
         <Container>
             <p className="lg:text-5xl md:text-3xl text-2xl text-center font-thin text-neutral-800">Our Popular Instructors</p>

@@ -7,7 +7,7 @@ import errorImg from '../../assets/animation/404-animation.json'
 const ErrorPage = () => {
     const {error} = useRouteError();
     return (
-        <section className='flex items-center h-screen p-16 bg-gray-100'>
+        <section className='flex items-center justify-center h-screen p-16 bg-gray-100'>
             <Container>
             <div className='container flex flex-col items-center justify-center px-5 mx-auto my-8'>
                
