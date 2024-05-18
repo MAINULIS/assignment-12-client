@@ -13,14 +13,14 @@ const CourseCard = ({ course }) => {
                     </h2>
                     <div className="flex justify-between">
                         <h2 className="">
-                            <span className="md:text-xl font-semibold text-neutral-700">Available seats:</span>
-                            <span className="text-neutral-500"> {course.availableSets}</span>
+                            <span className="font-semibold text-neutral-500">Available seats:</span>
+                            <span className="text-neutral-600 text-xl font-semibold"> {course.availableSets}</span>
                         </h2>
-                        <div className="badge badge-secondary text-white font-semibold">$ {course.price}</div>
+                        <div className="badge badge-secondary text-white font-semibold text-nowrap">$ {course.price}</div>
                     </div>
                     <div className="card-actions flex justify-between mt-3">
-                        <h2><span className="md:text-xl font-semibold text-neutral-700">Duration:</span> <span className="text-neutral-500">{course.duration}</span></h2>
-                        <div className="badge badge-outline bg-cyan-600 text-neutral-900 p-3 cursor-pointer">Enroll Now</div>
+                        <h2><span className="font-semibold text-neutral-500">Duration:</span> <span className="text-neutral-600 text-xl font-semibold">{course.duration}</span></h2>
+                        <button className="inline-flex justify-center rounded-md border border-transparent bg-cyan-200 px-4 py-2 text-sm font-medium text-neutral-500 hover:bg-cyan-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2">Enroll Now</button>
                     </div>
                 </div>
             </div>
