@@ -1,8 +1,7 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { ImFire } from "react-icons/im";
 
 const AllCourseCard = ({ course }) => {
     const { _id, name, image, instructorName, availableSets, price, duration,
@@ -10,8 +9,10 @@ const AllCourseCard = ({ course }) => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const [insertedId, setInsertedId] = useState(null)
 
     const handleSelect = (course) => {
+        
 
         if (user && user.email) {
             const selectedCourse = { courseId: _id, name, image, price, instructorName, email: user?.email }
@@ -24,6 +25,7 @@ const AllCourseCard = ({ course }) => {
             })
             .then(res => res.json())
             .then(data => {
+                setInsertedId(data.insertedId)
                 if(data.insertedId){
                  toast.success( `${name} Course is added to your cart as selected Course.` ,{
                     style: {
@@ -62,7 +64,7 @@ const AllCourseCard = ({ course }) => {
                     <button
                         onClick={() => handleSelect(course)}
                         // ToDo: btn also will be disabled if logged as admin or instructor
-                        disabled={availableSets === 0}
+                        disabled={availableSets === 0 || insertedId}
                         className="inline-flex justify-center rounded-md border border-transparent bg-cyan-200 px-4 py-2 text-sm font-semibold text-neutral-500 hover:bg-cyan-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2  relative
                      disabled:opacity-70
                      disabled:cursor-not-allowed

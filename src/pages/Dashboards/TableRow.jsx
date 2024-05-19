@@ -1,6 +1,18 @@
 import { FaTrash } from "react-icons/fa";
+import { deleteSelectedCourse } from "../../apis/courses";
+import toast from "react-hot-toast";
 
 const TableRow = ({ index,selectedCourse, fetchSelectedCourses}) => {
+    const handleDelete = (id) => {
+        deleteSelectedCourse(id)
+        .then(data => {
+            console.log(data);
+            if(data.deletedCount > 0){
+                fetchSelectedCourses();
+                toast.success('The Selected Course Deleted')
+            }
+        })
+    }
     return (
         <tr>
             <th> {index + 1}</th>
@@ -23,7 +35,7 @@ const TableRow = ({ index,selectedCourse, fetchSelectedCourses}) => {
                 <span className="font-semibold text-neutral-700">$ {selectedCourse.price}</span>
             </td>
             <td>
-                <button data-te-toggle="tooltip" title="Delete"> <FaTrash  className="w-5 h-5 hover:scale-110 hover:text-red-500 text-red-400"/> </button>
+                <button onClick={ () => handleDelete(selectedCourse._id)} data-te-toggle="tooltip" title="Delete"> <FaTrash  className="w-5 h-5 hover:scale-110 hover:text-red-500 text-red-400"/> </button>
             </td>
             <td>
                 <button className="badge badge-outline  bg-green-400 hover:bg-green-500 p-4 text-white font-bold"> Pay </button>

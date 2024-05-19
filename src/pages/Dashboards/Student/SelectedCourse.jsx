@@ -61,9 +61,9 @@ const SelectedCourse = () => {
         ) :
         (
             <div className='h-screen gap-5 flex flex-col justify-center items-center'>
-            <p className='text-gray-600 text-xl lg:text-3xl mt-10'></p>
+            <p className='text-gray-600 text-xl lg:text-3xl mt-10'>So far no course selected!</p>
             <Link to='/all-courses'>
-                <button>Get Courses</button>
+                <button className="bg-cyan-200 px-4 py-2 font-semibold text-neutral-500 hover:bg-cyan-300 focus:outline-none rounded-sm ">Get Courses</button>
             </Link>
         </div>
         )

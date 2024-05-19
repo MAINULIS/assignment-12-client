@@ -16,3 +16,15 @@ export const getSelectedCourse = async email => {
     const selected= await response.json();
     return selected;
 }
+
+// delete a selected course
+export const deleteSelectedCourse = async id => {
+    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/selected/${id}`,{
+        method: 'DELETE',
+        headers: {
+            'content-type' : 'application/json',
+        },
+    })
+    const data = await response.json();
+    return data;
+}
