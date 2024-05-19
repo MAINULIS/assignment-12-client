@@ -55,7 +55,7 @@ const Instructors = () => {
                                     <br />
                                 </td>
                                 <td>
-                                    <button className="badge badge-outline bg-lime-300 text-neutral-700 p-3 font-semibold text-nowrap">See Classes</button>
+                                    <button  className="badge badge-outline bg-lime-300 text-neutral-700 p-3 font-semibold text-nowrap">See Classes</button>
                                 </td>
                                 
                             </tr>)
