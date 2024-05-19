@@ -21,7 +21,7 @@ const Instructors = () => {
         return <Loader></Loader>
     }
     return (
-        <div className="w-full">
+        <div className="w-full overflow-x-auto">
             <Container>
                 <h3  className=" text-3xl md:text-4xl lg:text-5xl font-semibold text-neutral-950 mb-12">Our All Renowned Instructors</h3>
             <table className="table">
@@ -31,7 +31,7 @@ const Instructors = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>See Classes</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
