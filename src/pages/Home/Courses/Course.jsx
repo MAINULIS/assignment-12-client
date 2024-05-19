@@ -19,7 +19,7 @@ const Course = () => {
             })
             .catch(error => console.log(error))
     }, [])
-    console.log(courses);
+    
     if (loading) {
         return <Loader></Loader>
     }

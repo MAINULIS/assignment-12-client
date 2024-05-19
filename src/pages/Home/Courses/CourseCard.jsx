@@ -10,13 +10,14 @@ const CourseCard = ({ course }) => {
                 <div className="card-body  border border-t-0 -mt-5 ">
                     <h2 className="card-title md:text-2xl text-black">
                         {course.name}
+                        <div className="badge badge-secondary text-white font-semibold ">$ {course.price}</div>
                     </h2>
                     <div className="flex justify-between">
                         <h2 className="">
                             <span className="font-semibold text-neutral-500">Available seats:</span>
                             <span className="text-neutral-600 text-xl font-semibold"> {course.availableSets}</span>
                         </h2>
-                        <div className="badge badge-secondary text-white font-semibold text-nowrap">$ {course.price}</div>
+                        
                     </div>
                     <div className="card-actions flex justify-between mt-3">
                         <h2><span className="font-semibold text-neutral-500">Duration:</span> <span className="text-neutral-600 text-xl font-semibold">{course.duration}</span></h2>
