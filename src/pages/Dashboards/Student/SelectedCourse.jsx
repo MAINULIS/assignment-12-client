@@ -20,7 +20,6 @@ const SelectedCourse = () => {
         fetchSelectedCourses()
     } ,[user])
 
-    console.log(selectedCourses);
 
     return (
       <>

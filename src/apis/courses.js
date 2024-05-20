@@ -29,3 +29,18 @@ export const deleteSelectedCourse = async id => {
     const data = await response.json();
     return data;
 }
+
+// get a single course
+export const singleCourse = async id => {
+    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/selected/${id}`,{
+        method: 'GET',
+        headers: {
+            'content-type' : 'application/json',
+        },
+    })
+    const data = await response.json();
+    return data;
+}
+
+// update course info
+

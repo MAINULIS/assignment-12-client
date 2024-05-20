@@ -10,6 +10,8 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import SelectedCourse from "../pages/Dashboards/Student/SelectedCourse";
 import PrivateRoute from "./PrivateRoute";
 import EnrolledClasses from "../pages/Dashboards/Student/EnrolledClasses";
+import Payment from "../pages/Dashboards/Student/Payment";
+import { singleCourse } from "../apis/courses";
 
 export const router = createBrowserRouter([
     {
@@ -50,6 +52,11 @@ export const router = createBrowserRouter([
             {
                 path:'/dashboard/enrolled-courses',
                 element: <EnrolledClasses />
+            },
+            {
+                path:'/dashboard/payment/:id',
+                element: <Payment />,
+                loader: ({params}) => singleCourse(params.id)
             }
         ]
     }

@@ -1,6 +1,7 @@
 import { FaTrash } from "react-icons/fa";
 import { deleteSelectedCourse } from "../../apis/courses";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const TableRow = ({ index, selectedCourse, fetchSelectedCourses}) => {
     const handleDelete = (id) => {
@@ -38,7 +39,9 @@ const TableRow = ({ index, selectedCourse, fetchSelectedCourses}) => {
                 <button onClick={ () => handleDelete(selectedCourse._id)} data-te-toggle="tooltip" title="Delete"> <FaTrash  className="w-5 h-5 hover:scale-110 hover:text-red-500 text-red-400"/> </button>
             </td>
             <td>
+                <Link to={`/dashboard/payment/${selectedCourse._id}`}>
                 <button className="badge badge-outline  bg-green-400 hover:bg-green-500 p-4 text-white font-bold"> Pay </button>
+                </Link>
             </td>
         </tr>
     );
