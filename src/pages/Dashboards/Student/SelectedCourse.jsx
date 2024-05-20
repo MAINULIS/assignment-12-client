@@ -9,7 +9,7 @@ const SelectedCourse = () => {
     const [selectedCourses, setSelectedCourses] = useState([]);
 
     const fetchSelectedCourses = () => {
-        getSelectedCourse(user?.email)
+        getSelectedCourse(user?.email) 
         .then(data => {
             setSelectedCourses(data);
         })
@@ -21,7 +21,6 @@ const SelectedCourse = () => {
     } ,[user])
 
     console.log(selectedCourses);
-
 
     return (
       <>

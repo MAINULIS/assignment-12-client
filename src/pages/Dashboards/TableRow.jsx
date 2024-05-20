@@ -2,7 +2,7 @@ import { FaTrash } from "react-icons/fa";
 import { deleteSelectedCourse } from "../../apis/courses";
 import toast from "react-hot-toast";
 
-const TableRow = ({ index,selectedCourse, fetchSelectedCourses}) => {
+const TableRow = ({ index, selectedCourse, fetchSelectedCourses}) => {
     const handleDelete = (id) => {
         deleteSelectedCourse(id)
         .then(data => {
