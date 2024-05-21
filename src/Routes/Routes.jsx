@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import EnrolledClasses from "../pages/Dashboards/Student/EnrolledClasses";
 import Payment from "../pages/Dashboards/Student/Payment";
 import { singleCourse } from "../apis/courses";
+import PaymentHistory from "../pages/Dashboards/Student/PaymentHistory";
 
 export const router = createBrowserRouter([
     {
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
                 path:'/dashboard/payment/:id',
                 element: <Payment />,
                 loader: ({params}) => singleCourse(params.id)
+            },
+            {
+                path:'/dashboard/payment-history',
+                element: <PaymentHistory />
             }
         ]
     }

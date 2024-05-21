@@ -86,9 +86,15 @@ const CheckoutForm = ({ courseData }) => {
                     console.log(res.data);
                     if (res.data.insertedId) {
                         // ToDo: update course info. student num will 1 less
-                        const text = `Course booked Successfully! Your TransactionId: ${transactionId}`
-                        toast.success(text)
-                        // navigate('/dashboard/selected-courses');
+                        const text = `You Have Successfully Enrolled The Course! Your TransactionId: ${transactionId}`
+                        toast.success(text ,{
+                            style: {
+                                border: '1px solid #713200',
+                                padding: '16px',
+                                color: '#713200',
+                              }
+                        })
+                        navigate('/dashboard/payment-history');
                         setProcessing(false)
                     }
                 })

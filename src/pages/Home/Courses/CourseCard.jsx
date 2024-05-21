@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const CourseCard = ({ course }) => {
     return (
@@ -21,7 +22,9 @@ const CourseCard = ({ course }) => {
                     </div>
                     <div className="card-actions flex justify-between mt-3">
                         <h2><span className="font-semibold text-neutral-500">Duration:</span> <span className="text-neutral-600 text-xl font-semibold">{course.duration}</span></h2>
-                        <button className="inline-flex justify-center rounded-md border border-transparent bg-cyan-200 px-4 py-2 text-sm  font-semibold text-neutral-500 hover:bg-cyan-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2">Select Class</button>
+                        <Link to="/all-courses">
+                        <button className="inline-flex justify-center rounded-md border border-transparent bg-cyan-200 px-4 py-2 text-sm  font-semibold text-neutral-500 hover:bg-cyan-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2">Select Now</button>
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -10,7 +10,14 @@ const TableRow = ({ index, selectedCourse, fetchSelectedCourses}) => {
             console.log(data);
             if(data.deletedCount > 0){
                 fetchSelectedCourses();
-                toast.success('The Selected Course Deleted')
+                toast.success('The Selected Course is Deleted successfully.', {
+                    style: {
+                        border: '1px solid #713200',
+                        padding: '16px',
+                        color: '#713200',
+                      }
+                }
+                    )
             }
         })
     }

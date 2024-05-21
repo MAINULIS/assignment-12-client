@@ -1,17 +1,24 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
-import { getSelectedCourse } from "../../../apis/courses";
+// import { getSelectedCourse } from "../../../apis/courses";
 import { Link } from "react-router-dom";
 import TableRow from "../TableRow";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const SelectedCourse = () => {
     const {user} = useContext(AuthContext);
     const [selectedCourses, setSelectedCourses] = useState([]);
+    const [axiosSecure] = useAxiosSecure();
 
     const fetchSelectedCourses = () => {
-        getSelectedCourse(user?.email) 
-        .then(data => {
-            setSelectedCourses(data);
+        // getSelectedCourse(user?.email) 
+        // .then(data => {
+        //     setSelectedCourses(data);
+        // })
+        // .catch(error => console.log(error))
+        axiosSecure.get(`/selected?email=${user?.email}`)
+        .then(res => {
+            setSelectedCourses(res.data)
         })
         .catch(error => console.log(error))
     }
@@ -26,7 +33,7 @@ const SelectedCourse = () => {
       {
         selectedCourses && Array.isArray(selectedCourses) && selectedCourses.length > 0 ?
         (
-            <div className="w-full ">
+            <div className="w-full overflow-x-auto">
            
             <h3  className=" text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-800 mb-12 mt-7 text-center">Your Selected Courses</h3>
         <table className="table">

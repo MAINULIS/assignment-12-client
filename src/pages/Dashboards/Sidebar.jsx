@@ -4,7 +4,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import { GrLogout } from 'react-icons/gr';
 const Sidebar = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { logOut } = useContext(AuthContext);
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate()
 
@@ -35,7 +35,7 @@ const Sidebar = () => {
                   </NavLink>
                 </li>
                 <li className="mb-4">
-                  <NavLink to="/payment-history" activeClassName="bg-gray-700" className="flex items-center space-x-2 p-2 rounded hover:bg-gray-700">
+                  <NavLink to="/dashboard/payment-history" activeClassName="bg-gray-700" className="flex items-center space-x-2 p-2 rounded hover:bg-gray-700">
                     <FaHistory />
                     <span>Payment History</span>
                   </NavLink>

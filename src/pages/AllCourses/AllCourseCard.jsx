@@ -15,7 +15,7 @@ const AllCourseCard = ({ course }) => {
         
 
         if (user && user.email) {
-            const selectedCourse = { courseId: _id, name, image, price, instructorName, email: user?.email }
+            const selectedCourse = { courseId: _id, name, image, price, instructorName, email: user?.email, duration }
             fetch(`${import.meta.env.VITE_BASE_URL}/selected`, {
                 method: 'POST',
                 headers: {

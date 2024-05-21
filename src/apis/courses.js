@@ -6,7 +6,7 @@ export const getAllCourses = async() => {
     return data;
 }
 
-// get all selected course for a student by email
+// get all selected course for a student by email // this work implemented by axiosSecure
 export const getSelectedCourse = async email => {
     const response = await fetch(`${import.meta.env.VITE_BASE_URL}/selected?email=${email}`, {
         method: 'GET',
@@ -40,6 +40,18 @@ export const singleCourse = async id => {
     })
     const data = await response.json();
     return data;
+}
+
+// get enrolled courses data
+export const getEnrollCourse = async email => {
+    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/enrolled-courses?email=${email}`, {
+        method: 'GET',
+        headers: {
+            'content-type' : 'application/json'
+        },
+    })
+    const selected= await response.json();
+    return selected;
 }
 
 // update course info
