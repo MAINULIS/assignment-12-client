@@ -7,7 +7,7 @@ const stripePromise = loadStripe(`${import.meta.env.VITE_STRIPE_PK}`)
 
 const Payment = () => {
     const courseData = useLoaderData();
-    console.log(courseData);
+    console.log(courseData); 
     return (
         <div className="w-full mt-12 flex  flex-col justify-center items-center ">
             <div className="card w-2/3 bg-neutral-100 text-neutral-content pb-6">

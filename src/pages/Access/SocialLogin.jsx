@@ -6,25 +6,39 @@ import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
-    const {signInWithGoogle, setLoading} = useContext(AuthContext);
+    const { signInWithGoogle, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
-    const handleGoogleLogin = () =>{
+    const handleGoogleLogin = () => {
         signInWithGoogle()
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            toast.success('You have been successfully signed in !');
-            setLoading(false)
-            navigate(from, {replace:true})
-        })
-        .catch(error =>{
-            console.log(error.message)
-            toast.error(error.message)
-            setLoading(false)
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                const userInfo = { name: loggedUser.displayName, email: loggedUser.email, role: "student" }
+                fetch(`${import.meta.env.VITE_BASE_URL}/users`, {
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(userInfo)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            setLoading(false);
+                            navigate(from, { replace: true })
+                            toast.success("You have been successfully signed in !")
+                        }
+                    })
+                
+            })
+            .catch(error => {
+                console.log(error.message)
+                toast.error(error.message)
+                setLoading(false)
+            })
     }
     return (
         <div>

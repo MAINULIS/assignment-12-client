@@ -12,7 +12,7 @@ const Course = () => {
         setLoading(true);
         getAllCourses()
             .then(data => {
-                const sortedData = data.sort((a, b) => b.price - a.price);
+                const sortedData = data.sort((a, b) => b.enrolledStudents - a.enrolledStudents);
                 const top6Courses = sortedData.slice(0, 6)
                 setCourses(top6Courses);
                 setLoading(false);

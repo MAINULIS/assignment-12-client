@@ -6,6 +6,8 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import toast from "react-hot-toast";
 import { ImSpinner9 } from "react-icons/im";
 import './CheckoutForm.css'
+import { deleteSelectedCourse } from "../../../apis/courses";
+// import { updateStudent } from "../../../apis/courses";
 
 const CheckoutForm = ({ courseData }) => {
     const { user } = useContext(AuthContext);
@@ -85,17 +87,43 @@ const CheckoutForm = ({ courseData }) => {
                 .then(res => {
                     console.log(res.data);
                     if (res.data.insertedId) {
+                        // delete the course from selected page
+                        deleteSelectedCourse(courseData._id)
+                            .then(data => {
+                                console.log(data);
+                                if (data.deletedCount > 0) {
+                                    const text = `You Have Successfully Enrolled The Course! Your TransactionId: ${paymentInfo.transactionId}`
+                                    toast.success(text, {
+                                        style: {
+                                            border: '1px solid #713200',
+                                            padding: '16px',
+                                            color: '#713200',
+                                        }
+                                    })
+                                    navigate('/dashboard/payment-history');
+                                    setProcessing(false)
+                                }
+                            })
+
                         // ToDo: update course info. student num will 1 less
-                        const text = `You Have Successfully Enrolled The Course! Your TransactionId: ${transactionId}`
-                        toast.success(text ,{
-                            style: {
-                                border: '1px solid #713200',
-                                padding: '16px',
-                                color: '#713200',
-                              }
-                        })
-                        navigate('/dashboard/payment-history');
-                        setProcessing(false)
+                        // updateStudent(paymentInfo.courseId, paymentInfo.enrolledStudents, paymentInfo.availableSets)
+                        //     .then(data => {
+                        //         console.log(data);
+                        //         const text = `You Have Successfully Enrolled The Course! Your TransactionId: ${transactionId}`
+                        //         toast.success(text, {
+                        //             style: {
+                        //                 border: '1px solid #713200',
+                        //                 padding: '16px',
+                        //                 color: '#713200',
+                        //             }
+                        //         })
+                        //         navigate('/dashboard/payment-history');
+                        //         setProcessing(false)
+                        //     })
+                        //     .catch(error => {
+                        //         console.log(error);
+                        //         setProcessing(false)
+                        //     })
                     }
                 })
         }
@@ -103,7 +131,7 @@ const CheckoutForm = ({ courseData }) => {
     return (
 
         <>
-            <form className="w-2/3 mx-auto m-8" onSubmit={handleSubmit}>
+            <form className="w-2/3 mx-auto m-8" onSubmit={handleSubmit} >
                 <CardElement className="shadow-lg p-3 hover:shadow-xl"
                     options={{
                         style: {

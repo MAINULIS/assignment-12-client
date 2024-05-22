@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import axios from "axios";
+import { getRole } from "../apis/user";
 
 export const AuthContext = createContext(null);
 // firebase
@@ -11,6 +12,15 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [role, setRole] = useState(null);
+
+    // 0.set role
+    useEffect( () => {
+        if(user) {
+            getRole(user?.email)
+            .then(data => setRole(data))
+        }
+    })
 
     // 1. create user
     const createUser = (email, password) => {
@@ -81,6 +91,8 @@ const AuthProvider = ({ children }) => {
         resetPassword,
         logOut,
         updateUserProfile,
+        role,
+        setRole
     }
     return (
         <AuthContext.Provider value={authInfo}>
