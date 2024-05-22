@@ -19,7 +19,7 @@ const Sidebar = () => {
   return (
     <div className="flex">
       <div onClick={toggleSidebar} className={`fixed z-30 inset-y-0 left-0 w-64 bg-gray-900 text-gray-100 p-5 transition-transform transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
-        <div className="text-2xl font-bold mb-5 ">{role === "student" && 'Student'} {role === "admin" && 'Admin'} {role === 'instructor' && 'Instructor'} Dashboard</div>
+        <div className="text-2xl font-bold mb-5 ">{role === "student" && 'Student'} {role === "admin" && 'Admin'} {role === 'instructor' && 'Instructor'}</div>
         <nav className="flex flex-col justify-between h-full py-5">
           {
             role === 'student' &&

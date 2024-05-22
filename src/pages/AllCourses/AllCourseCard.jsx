@@ -13,7 +13,6 @@ const AllCourseCard = ({ course }) => {
 
     const handleSelect = (course) => {
         
-
         if (user && user.email) {
             const selectedCourse = { courseId: _id, name, image, price,availableSets, enrolledStudents, instructorName, email: user?.email, duration }
             fetch(`${import.meta.env.VITE_BASE_URL}/selected`, {
