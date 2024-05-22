@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getInstructors } from "../../apis/instructors";
 import Loader from "../../components/shared/Loader";
 import Container from "../../components/shared/Container";
+import { Helmet } from "react-helmet-async";
 
 const Instructors = () => {
     const [instructors, setInstructors] = useState([]);
@@ -22,6 +23,9 @@ const Instructors = () => {
     }
     return (
         <div className="w-full overflow-x-auto">
+             <Helmet>
+                <title>Language School | Instructors</title>
+              </Helmet>
             <Container>
                 <h3  className=" text-3xl md:text-4xl lg:text-5xl font-semibold text-neutral-950 mb-12">Our All Renowned Instructors</h3>
             <table className="table">

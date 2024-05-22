@@ -25,14 +25,12 @@ const SocialLogin = () => {
                     body: JSON.stringify(userInfo)
                 })
                     .then(res => res.json())
-                    .then(data => {
-                        if (data.insertedId) {
-                            setLoading(false);
-                            navigate(from, { replace: true })
-                            toast.success("You have been successfully signed in !")
-                        }
+                    .then(() => {
+                        setLoading(false);
+                        navigate(from, { replace: true })
+                        toast.success("You have been successfully signed in !")
                     })
-                
+
             })
             .catch(error => {
                 console.log(error.message)

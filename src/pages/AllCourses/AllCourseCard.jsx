@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 const AllCourseCard = ({ course }) => {
     const { _id, name, image, instructorName, availableSets, price, duration,
         enrolledStudents } = course
-    const { user } = useContext(AuthContext);
+    const { user, role } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const [insertedId, setInsertedId] = useState(null)
@@ -63,8 +63,7 @@ const AllCourseCard = ({ course }) => {
                 <div className="mt-5">
                     <button
                         onClick={() => handleSelect(course)}
-                        // ToDo: btn also will be disabled if logged as admin or instructor
-                        disabled={availableSets === 0 || insertedId}
+                        disabled={availableSets === 0 || insertedId || role === "admin" || role === "instructor"}
                         className="inline-flex justify-center rounded-md border border-transparent bg-cyan-200 px-4 py-2 text-sm font-semibold text-neutral-500 hover:bg-cyan-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2  relative
                      disabled:opacity-70
                      disabled:cursor-not-allowed

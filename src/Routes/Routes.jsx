@@ -13,6 +13,8 @@ import EnrolledClasses from "../pages/Dashboards/Student/EnrolledClasses";
 import Payment from "../pages/Dashboards/Student/Payment";
 import { singleCourse } from "../apis/courses";
 import PaymentHistory from "../pages/Dashboards/Student/PaymentHistory";
+import ManageClasses from "../pages/Dashboards/Admin/ManageClasses";
+import ManageUsers from "../pages/Dashboards/Admin/ManageUsers";
 
 export const router = createBrowserRouter([
     {
@@ -31,17 +33,18 @@ export const router = createBrowserRouter([
             {
                 path: 'all-courses',
                 element:<AllCourses></AllCourses> 
-            }
+            },
+            {
+                path:'login',
+                element: <Login />
+            },
+            {
+                path:'signup',
+                element: <SignUp />
+            },
         ]
     },
-    {
-        path:'login',
-        element: <Login />
-    },
-    {
-        path:'signup',
-        element: <SignUp />
-    },
+   
     {
         path: 'dashboard',
         element:<PrivateRoute>  <DashboardLayout /> </PrivateRoute>,
@@ -62,7 +65,15 @@ export const router = createBrowserRouter([
             {
                 path:'/dashboard/payment-history',
                 element: <PaymentHistory />
-            }
+            },
+            {
+                path:'/dashboard/manage-classes',
+                element: <ManageClasses />
+            },
+            {
+                path:'/dashboard/manage-users',
+                element: <ManageUsers />
+            },
         ]
     }
     
