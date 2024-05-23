@@ -11,8 +11,8 @@ const Instructor = () => {
         setLoading(true);
         getInstructors()
             .then(data => {
-                const sortedData = data.sort((a, b) => b.students - a.students);
-                const top6Instructors = sortedData.slice(0, 6)
+                // const sortedData = data.sort((a, b) => b.students - a.students);
+                const top6Instructors = data.slice(0, 6)
                 setInstructors(top6Instructors);
                 setLoading(false);
             })

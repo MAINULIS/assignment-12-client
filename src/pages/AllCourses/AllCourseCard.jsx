@@ -43,7 +43,7 @@ const AllCourseCard = ({ course }) => {
     return (
         <div className="card bg-white gap-2 flex w-full border rounded shadow-sm flex-col">
             <div>
-                <img className="object-cover w-[424px] h-[320px]  " src={image} alt="course image" />
+                <img className="object-cover w-full h-[320px]  " src={image} alt="course image" />
             </div>
 
             <div className={availableSeats === 0 ? "card-body  border bg-red-400" : "card-body  border"}>

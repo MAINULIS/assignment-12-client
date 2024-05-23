@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
@@ -64,7 +64,7 @@ const AddClass = () => {
     return (
         <div className="w-full  mt-10 ">
             <h3 className=" text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-800 mb-12 mt-7 text-center">Add A New Course</h3>
-            <form onSubmit={handleSubmit(onSubmit)} className="bg-neutral-100 lg:px-14 lg:py-10 items-center text-cyan-600 p-4 " action="">
+            <form onSubmit={handleSubmit(onSubmit)} className="bg-neutral-100 lg:px-14 lg:py-10 items-center text-cyan-600 p-4 shadow-sm" action="">
                 <div className="md:flex justify-between md:gap-2 lg:gap-4">
                     <label className="form-control lg:w-1/2">
                         <div className="label">
