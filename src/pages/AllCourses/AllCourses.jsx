@@ -12,7 +12,8 @@ const AllCourses = () => {
         setLoading(true);
         getAllCourses()
             .then(data => {
-                setCourses(data)
+                const filterCourse = data.filter(fd => fd.status === "approved")
+                setCourses(filterCourse)
                 setLoading(false);
             })
             .catch(error => console.log(error))

@@ -89,9 +89,9 @@ const Sidebar = () => {
                   </NavLink>
                 </li>
                 <li className="mb-4">
-                  <NavLink to="/dashboard/my-classes" activeClassName="bg-gray-700" className="flex items-center space-x-2 p-2 rounded hover:bg-gray-700">
+                  <NavLink to="/dashboard/my-courses" activeClassName="bg-gray-700" className="flex items-center space-x-2 p-2 rounded hover:bg-gray-700">
                     <FaClipboardList />
-                    <span>My Class</span>
+                    <span>My Courses</span>
                   </NavLink>
                 </li>
 
