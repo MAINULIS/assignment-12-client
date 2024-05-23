@@ -56,17 +56,16 @@ export const getEnrollCourse = async email => {
  
 // ToDo
 // update course info
-// export const updateStudent = async (id,students, seats) => {
+// export const updateStudent = async (id) => {
 //     const response = await fetch (
 //         `${import.meta.env.VITE_API_URL}/courses/${id}`, {
 //             method: "PATCH",
 //             headers: {
 //                 'content-type' : 'application/json',
 //             },
-//             body: JSON.stringify({students,seats}),     
+        
 //         }
 //     )
 //     const data = await response.json();
 //     return data;
 // }
-

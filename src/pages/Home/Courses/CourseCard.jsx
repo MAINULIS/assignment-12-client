@@ -16,7 +16,7 @@ const CourseCard = ({ course }) => {
                     <div className="flex justify-between">
                         <h2 className="">
                             <span className="font-semibold text-neutral-500">Available seats:</span>
-                            <span className="text-neutral-600 text-xl font-semibold"> {course.availableSets}</span>
+                            <span className="text-neutral-600 text-xl font-semibold"> {course.availableSeats}</span>
                         </h2>
                         
                     </div>

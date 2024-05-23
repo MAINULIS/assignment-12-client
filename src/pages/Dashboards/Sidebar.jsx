@@ -72,6 +72,32 @@ const Sidebar = () => {
               </ul>
             </div>
           }
+          {
+            role === "instructor" &&
+            <div >
+              <ul>
+                <li className="mb-4">
+                  <NavLink to="/dashboard" activeClassName="bg-gray-700" className="flex items-center space-x-2 p-2 rounded hover:bg-gray-700">
+                    <HiHome />
+                    <span>Home</span>
+                  </NavLink>
+                </li>
+                <li className="mb-4">
+                  <NavLink to="/dashboard/add-class" activeClassName="bg-gray-700" className="flex items-center space-x-2 p-2 rounded hover:bg-gray-700">
+                    <FaBook />
+                    <span>Add Class</span>
+                  </NavLink>
+                </li>
+                <li className="mb-4">
+                  <NavLink to="/dashboard/my-classes" activeClassName="bg-gray-700" className="flex items-center space-x-2 p-2 rounded hover:bg-gray-700">
+                    <FaClipboardList />
+                    <span>My Class</span>
+                  </NavLink>
+                </li>
+
+              </ul>
+            </div>
+          }
           <div>
             <hr />
             <ul className='mt-3'>

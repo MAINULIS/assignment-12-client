@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const AllCourseCard = ({ course }) => {
-    const { _id, name, image, instructorName, availableSets, price, duration,
+    const { _id, name, image, instructorName, availableSeats, price, duration,
         enrolledStudents } = course
     const { user, role } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -14,7 +14,7 @@ const AllCourseCard = ({ course }) => {
     const handleSelect = (course) => {
         
         if (user && user.email) {
-            const selectedCourse = { courseId: _id, name, image, price,availableSets, enrolledStudents, instructorName, email: user?.email, duration }
+            const selectedCourse = { courseId: _id, name, image, price,availableSeats, enrolledStudents, instructorName, email: user?.email, duration }
             fetch(`${import.meta.env.VITE_BASE_URL}/selected`, {
                 method: 'POST',
                 headers: {
@@ -46,7 +46,7 @@ const AllCourseCard = ({ course }) => {
                 <img className="object-cover w-[424px] h-[320px]  " src={image} alt="course image" />
             </div>
 
-            <div className={availableSets === 0 ? "card-body  border bg-red-400" : "card-body  border"}>
+            <div className={availableSeats === 0 ? "card-body  border bg-red-400" : "card-body  border"}>
                 <div className="card-title md:text-2xl text-black mx-auto">
                     {name}
                     <div className="badge badge-secondary mt-2 text-white font-semibold flex justify-end mx-auto"> <span>$ {price}</span></div>
@@ -54,7 +54,7 @@ const AllCourseCard = ({ course }) => {
                 <div className="text-nowrap pt-3"><span className=" font-semibold text-neutral-500">Instructor: </span><span className="text-neutral-600 text-xl font-semibold">{instructorName}</span></div>
 
                 <div className="text-nowrap"><span className=" font-semibold text-neutral-500">Available seats:</span>
-                    <span className="text-neutral-600 text-xl font-semibold "> {availableSets}</span></div>
+                    <span className="text-neutral-600 text-xl font-semibold "> {availableSeats}</span></div>
                 <div><span className="font-semibold text-neutral-500">Duration:</span> <span className="text-neutral-600 text-xl font-semibold">{duration}</span></div>
 
                 
@@ -62,7 +62,7 @@ const AllCourseCard = ({ course }) => {
                 <div className="mt-5">
                     <button
                         onClick={() => handleSelect(course)}
-                        disabled={availableSets === 0 || insertedId || role === "admin" || role === "instructor"}
+                        disabled={availableSeats === 0 || insertedId || role === "admin" || role === "instructor"}
                         className="inline-flex justify-center rounded-md border border-transparent bg-cyan-200 px-4 py-2 text-sm font-semibold text-neutral-500 hover:bg-cyan-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2  relative
                      disabled:opacity-70
                      disabled:cursor-not-allowed
