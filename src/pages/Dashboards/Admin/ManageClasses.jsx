@@ -76,7 +76,7 @@ const ManageClasses = () => {
     return (
         <div className="w-full overflow-x-auto">
 
-            <h3 className=" text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-800 mb-12 mt-7 text-center"> Our All Classes</h3>
+            <h3 className=" text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-800 mb-12 mt-7 text-center"> Our All Courses</h3>
             <table className="table">
                 {/* head */}
                 <thead className="text-white bg-cyan-600">
@@ -86,6 +86,7 @@ const ManageClasses = () => {
                         <th>Instructor</th>
                         <th>Email</th>
                         <th>Available Seats</th>
+                        <th>duration</th>
                         <th>Status</th>
                         <th>Action</th>
                         <th>Action</th>

@@ -9,7 +9,7 @@ const DashboardLayout = () => {
                 <title>Language School | Dashboard</title>
               </Helmet>
         <Sidebar />
-        <div className='flex-1 md lg:ml-20 lg:mr-8'>
+        <div className='flex-1 md lg:ml-16 lg:mr-8'>
           <div className='p-5'>
             <Outlet />
           </div>

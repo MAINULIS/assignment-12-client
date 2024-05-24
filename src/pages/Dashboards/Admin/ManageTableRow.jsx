@@ -39,6 +39,9 @@ const ManageTableRow = ({ index, course, handleApproved, handleDeny }) => {
                 <td>
                     <span className="font-semibold text-neutral-700">{course?.availableSeats}</span>
                 </td>
+                <td>
+                    <span className="font-semibold text-neutral-700">{course?.duration}</span>
+                </td>
                 {
                     course.status === 'pending' && <td>
                         <span className="font-semibold text-neutral-700" >{course?.status}</span>

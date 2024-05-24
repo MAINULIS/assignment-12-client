@@ -1,12 +1,34 @@
 import { Fragment } from "react";
 import { Button, Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@headlessui/react'
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const FeedbackModal = ({ isOpen, closeModal, course, modalHandler }) => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
+    const [axiosSecure] = useAxiosSecure();
+
     const onSubmit = data => {
         const feedback = data.feedback;
-        console.log(feedback);
+        if(feedback.length === 0) {
+            return ;
+        }  
+        const name = course.name;
+        const instructorName = course.instructorName;
+        const email = course.email;
+        const status = course.status;
+        const sendFeedback = {name,instructorName, email,status, feedback};
+
+        axiosSecure.post('/feedback', sendFeedback)
+            .then(data => {
+                console.log(data.data);
+                if(data.data.insertedId){
+                    reset();
+                    toast.success(`Your feedback successfully sent to ${course.instructorName} !`)
+                closeModal()
+                }
+                
+            })
     }
 
     return (
@@ -34,7 +56,7 @@ const FeedbackModal = ({ isOpen, closeModal, course, modalHandler }) => {
                                             <div className="label">
                                                 <span className="label-text font-semibold text-gray-900 text-xl">{`Write Your Feedback about ${course.name} language course`}</span>
                                             </div>
-                                            <textarea {...register("feedback", { required: true })} className="textarea textarea-bordered h-24 bg-white" placeholder="Recipe Details"></textarea>
+                                            <textarea {...register("feedback", { required: true })} className="textarea textarea-bordered h-24 bg-white text-gray-800 font-medium text-xl" placeholder="Write your feedback..."></textarea>
                                             <div className="label">
                                             </div>
                                         </label>
