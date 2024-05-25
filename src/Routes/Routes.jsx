@@ -17,6 +17,7 @@ import ManageClasses from "../pages/Dashboards/Admin/ManageClasses";
 import ManageUsers from "../pages/Dashboards/Admin/ManageUsers";
 import AddClass from "../pages/Dashboards/Instructor/AddClass";
 import MyCourses from "../pages/Dashboards/Instructor/MyCourses";
+import UpdateCourse from "../pages/Dashboards/Instructor/UpdateCourse";
 
 export const router = createBrowserRouter([
     {
@@ -83,6 +84,10 @@ export const router = createBrowserRouter([
             {
                 path:'/dashboard/my-courses',
                 element: <MyCourses/>
+            },
+            {
+                path:'/dashboard/update-course/:id',
+                element: <UpdateCourse />,
             },
         ]
     }

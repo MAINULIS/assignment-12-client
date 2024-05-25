@@ -8,7 +8,7 @@ const MyCourses = () => {
     const {user, loading} = useContext(AuthContext);
     const [axiosSecure] = useAxiosSecure();
     const {data: courses=[], refetch} = useQuery({
-        queryKey: ['rooms', user?.email],
+        queryKey: ['courses', user?.email],
         enabled: !loading,
         queryFn: async () => {
           const res = await axiosSecure.get(`/courses/${user?.email}`)

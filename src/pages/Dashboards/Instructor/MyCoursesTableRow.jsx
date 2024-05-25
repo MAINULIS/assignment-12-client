@@ -3,10 +3,12 @@ import SeeFeedback from "./SeeFeedback";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 
 
 const MyCoursesTableRow = ({ index, course, }) => {
     let [isOpen, setIsOpen] = useState(false);
+    console.log('course', course);
 
     const { user, loading } = useContext(AuthContext);
     const [axiosSecure] = useAxiosSecure();
@@ -16,7 +18,6 @@ const MyCoursesTableRow = ({ index, course, }) => {
         enabled: !loading,
         queryFn: async () => {
             const res = await axiosSecure.get(`/feedback/${user?.email}`)
-            // console.log('res email fed',res.data);
             return res.data;
         }
     })
@@ -75,14 +76,16 @@ const MyCoursesTableRow = ({ index, course, }) => {
                 }
 
                 <td>
+                    <Link to={`/dashboard/update-course/${course._id}`}>
                     <button
                         className="badge badge-outline bg-green-300 hover:bg-green-400 py-4 px-3 text-white font-bold relative disabled:opacity-60 disabled:cursor-not-allowed">Update</button>
+                    </Link>
                 </td>
                 <td>
-                <div onClick={() => modalHandler(course._id)}>
-                    <button  onClick={() => setIsOpen(true,course._id)}
+                
+                    <button  onClick={() => setIsOpen(true)}
                         className="badge badge-outline  bg-indigo-300 hover:bg-indigo-400 p-4 text-white font-bold relative disabled:opacity-60
-                             disabled:cursor-not-allowed">See Feedback</button> </div>
+                        disabled:cursor-not-allowed">See Feedback</button>
 
                     
                         <SeeFeedback
