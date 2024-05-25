@@ -13,11 +13,12 @@ const FeedbackModal = ({ isOpen, closeModal, course, modalHandler }) => {
         if(feedback.length === 0) {
             return ;
         }  
+        const feedbackId = course._id;
         const name = course.name;
         const instructorName = course.instructorName;
         const email = course.email;
         const status = course.status;
-        const sendFeedback = {name,instructorName, email,status, feedback};
+        const sendFeedback = { feedbackId,name,instructorName, email,status, feedback};
 
         axiosSecure.post('/feedback', sendFeedback)
             .then(data => {
@@ -75,7 +76,6 @@ const FeedbackModal = ({ isOpen, closeModal, course, modalHandler }) => {
                                             </Button>
                                         </div>
                                     </form>
-
 
                                 </DialogPanel>
                             </TransitionChild>
