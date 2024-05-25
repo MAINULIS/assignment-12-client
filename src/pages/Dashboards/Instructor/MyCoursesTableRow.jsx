@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 
 const MyCoursesTableRow = ({ index, course, }) => {
     let [isOpen, setIsOpen] = useState(false);
-    console.log('course', course);
 
     const { user, loading } = useContext(AuthContext);
     const [axiosSecure] = useAxiosSecure();

@@ -64,16 +64,14 @@ const SignUp = () => {
                                         if (data.insertedId) {
                                             reset();
                                             toast.success("Your account successfully created")
-                                            navigate(from, { replace: true })
+                                            
                     
                                         }
                                     })
 
                             })
-                            .catch(error => {
-                                console.log(error.message);
-                                setLoading(false)
-                            })
+                            
+                            navigate(from, { replace: true })
                     })
                     .catch(error => {
                         console.log(error.message);

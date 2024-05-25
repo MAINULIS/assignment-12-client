@@ -105,7 +105,7 @@ const CheckoutForm = ({ courseData }) => {
                             }
                         })
 
-                    // ToDo: update course info. student num will 1 less
+                    // ToDo: update course info. seats num will 1 less
                     
                 }
                 })
