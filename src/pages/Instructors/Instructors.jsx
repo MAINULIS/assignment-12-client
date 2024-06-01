@@ -35,6 +35,8 @@ const Instructors = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Teach</th>
+                            <th>Students</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -56,6 +58,14 @@ const Instructors = () => {
                                 </td>
                                 <td>
                                     {instructor.email}
+                                    <br />
+                                </td>
+                                <td>
+                                    {instructor.teach}
+                                    <br />
+                                </td>
+                                <td>
+                                    {instructor.students}
                                     <br />
                                 </td>
                                 <td>

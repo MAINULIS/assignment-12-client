@@ -2,9 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import ManageTableRow from "./ManageTableRow";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const ManageClasses = () => {
     const [axiosSecure] = useAxiosSecure();
+    const {user} = useContext(AuthContext);
     
 
     const { refetch, data: courses = [] } = useQuery({
@@ -31,6 +34,19 @@ const ManageClasses = () => {
                     .then(data => {
                         if (data.modifiedCount) {
                             refetch();
+                            const instructorInfo = { name:course.instructorName, email:user?.email, teach: course.name, image:user?.photoURL, student:course.enrolledStudents }
+                                fetch(`${import.meta.env.VITE_BASE_URL}/instructors`, {
+                                    method: "POST",
+                                    headers: {
+                                        'content-type': 'application/json'
+                                    },
+                                    body: JSON.stringify(instructorInfo)
+                                })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                     console.log('inserted',data);
+                                    })
+
                         }
                     })
                 Swal.fire({
